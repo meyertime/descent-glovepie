@@ -1,0 +1,664 @@
+======================================
+RELEASE NOTES: iSynaptic.Commons
+======================================
+
+==== v0.4.32 (June 12, 2015) ====
+
+---- Features ----
+
+* Fixed bug where cast exception was being thrown
+  from IOutcome.Observations and IResult.Observations
+
+
+==== v0.4.31 (January 12, 2015) ====
+
+---- Features ----
+
+* Batch class now includes an indexer to retreive items...
+
+
+==== v0.4.30 (January 12, 2015) ====
+
+---- Features ----
+
+* Batch class now includes the underlying item index...
+
+
+==== v0.4.29 (May 27, 2014) ====
+
+---- Features ----
+
+* Added WithHasCurrent extension method...
+
+
+==== v0.4.28 (March 21, 2014) ====
+
+---- Features ----
+
+* Added additional Recurse overloads...
+
+
+==== v0.4.27 (February 12, 2014) ====
+
+---- Features ----
+
+* Recurse extension method is no-longer recursive internally.
+  It now uses iteration. This allows the Recurse function to
+  recurse through data structures without stack overflow issues.
+
+
+==== v0.4.26 (January 21, 2014) ====
+
+---- Features ----
+
+* Added Batch overloads to support batching by predicate
+
+* Removed RecurseSelect - same behavior can be achomplished by
+  calling Recurse(...) followed by Select(...)
+  
+* Enhanced Guard.NotNull to assist Resharper static analysis - 
+  Resharper should now know that NotNull does not enumerate the
+  guarded argument.
+
+
+==== v0.4.25 (January 2, 2014) ====
+
+---- Features ----
+
+* Fixed build issue with IL project where build script could not
+  find ilasm.exe
+
+* Added SelectMany overloads to support selecting Maybe<T> values
+  from IEnumerable<T> streams via query comprehension syntax
+
+* Maybe<T>'s ToString() method now returns the underlying value's
+  ToString() value
+
+
+==== v0.4.24 (October 25, 2013) ====
+
+---- Features ----
+
+* Added support to DeclarativeXmlParser for empty elements and
+  content elements
+
+
+==== v0.4.23 (October 10, 2013) ====
+
+---- Features ----
+
+* LookAheadEnumerator no longer retreives the underlying enumerator's
+  Current value after MoveNext() returns false
+
+
+==== v0.4.22 (August 16, 2013) ====
+
+---- Features ----
+
+* Added generic Visitor and MessageHandler implementation.
+
+
+==== v0.4.21 (March 6, 2013) ====
+
+---- Features ----
+
+* Targeting 4.5 .NET Framework.
+
+* Added covariant ITask<TResult> interface that is awaitable
+  and an extension method that wraps Task<TResult> to make it
+  covariant.
+
+
+==== v0.4.20 (February 26, 2013) ====
+
+---- Features ----
+
+* Adding missing Recurse overload.
+
+
+==== v0.4.19 (February 21, 2013) ====
+
+---- Features ----
+
+* Added RecurseSelect operators for Maybe<T> and IEnumerable<T>
+
+
+==== v0.4.18 (February 8, 2013) ====
+
+---- Features ----
+
+* Fixing bug with TypeHierarchyComparer when two nulls are compared.
+
+
+==== v0.4.17 (February 8, 2013) ====
+
+---- Features ----
+
+* Added support to TypeHierarchyComparer for comparing with null types.
+
+
+==== v0.4.16 (February 6, 2013) ====
+
+---- Features ----
+
+* Fixed bug where failures are lost in implicit conversion to Outcome<TObservation>
+  and Result<T, TObservation> when the source TObservation type is Unit.
+
+
+==== v0.4.15 (February 4, 2013) ====
+
+---- Features ----
+
+* IEnumerable<T> extensions: added RecurseWhile overloads; renamed methods 
+  that extend IEnumerable<Boolean> for clarity; improved argument validation.
+  
+* Added TryGetValue extension method to ConcurentDictionary<TKey, TValue>
+  that returns Maybe<TValue>.
+
+
+==== v0.4.14 (January 19, 2013) ====
+
+---- Features ----
+
+* IEnumerable<T> extensions: added SelectMaybe overloads
+  
+* Maybe<T> extensions: added SelectMany overloads that transition to
+  IEnumerable<TResult>
+
+
+==== v0.4.13 (December 12, 2012) ====
+
+---- Features ----
+
+* IEnumerable<T> extensions: added None, All, ZipAll, and OrderByDescending
+  overloads, updated OrderBy and OrderByPriorities overloads return type.
+
+* Added TypeHierarchyComparer.
+
+
+==== v0.4.12 (December 6, 2012) ====
+
+---- Features ----
+
+* Fixed bug in SurrogateExodataBindingSource where Lazy<T> was caching
+  exceptions.
+
+
+==== v0.4.10 (October 1, 2012) ====
+
+---- Features ----
+
+* Fixed issue with merging assemblies using ILMerge when .NET 4.5
+  is installed.
+
+
+==== v0.4.9 (August 24, 2012) ====
+
+---- Features ----
+
+* Added TryElementAt operator to IEnumerable<T> that returns a Maybe<T>.
+
+* Cleaned up names of arguments to Maybe<T> extension methods.
+
+* Added If and ToResult operators for Result<T, TObservation>.
+
+* Added ValidatedNotNullAttribute to support FxCop detecting null checks.
+
+* Supports .NET 4.5 CLR/BCL changes.
+
+
+==== v0.4.8 (March 6, 2012) ====
+
+---- Features ----
+
+* Fixed bug in Outcome.Inform that did not propigate failure when
+  there are no observations
+
+* Removed usage of LazySelectionDictionary from
+  AttributeExodataBindingSource - could cause race condition if
+  Exodata is resolved in an non-thread safe way.
+
+
+==== v0.4.7 (February 6, 2012) ====
+
+---- Features ----
+
+* Added TryFirst, TryLast, TrySelect, and Or operators to IEnumerable<T>
+  that returns a Maybe<T>.
+
+* Fixed bugs in CopyTo IEnumerable<T> extension methods.
+
+
+==== v0.4.6 (December 7, 2011) ====
+
+---- Features ----
+
+* Added Maybe.TrySelect that uses a selector that doesn't require input.
+
+* Added Squash operators on Maybe<T> instances that wrap IEnumerable<T>.
+
+* Added When and Recurse operator to Maybe<T>.
+
+* Added WithValueOnSuccess operator to Outcome<TObservation>.
+
+* Added NoValueOn and NoValueOnFailure to Result<T, TObservation>.
+
+* Added Let, Recurse, Squash, OnFirst, OnLast, OnValue, OnNoValue, OnException,
+  Leading, and WithNeighbors operators to IEnumerable<T>.
+
+* Added TryTake extension to IProducerConsumerCollection interface that 
+  returns a Maybe<T>.
+
+* Added methods to Ioc and DependencyResolverExtension classes to support
+  using symbols to resolve dependencies.
+
+---- Breaking Changes ----
+
+* Unwrap operator for Maybe<T> has been renamed to Squash.
+
+* ForceEnumeration operator for IEnumerable<T> has been renamed to Run.
+
+* ExodataDeclaration no longer allows null to be used as a default value.
+
+* Passing a Nullable<T> that contains no value into a Maybe or Result
+  is treated as no value.
+
+* Ioc static class strategy function is now based on ISymbol.
+
+
+==== v0.4.5 (November 7, 2011) ====
+
+---- Features ----
+
+* When an ExodataDeclaration does not have a default specified, calling
+  Resolve will now throw an exception, instead of defaulting to the 
+  TExodata type's default value (e.g. null or zero).
+
+
+==== v0.4.4 (November 2, 2011) ====
+
+---- Features ----
+
+* Fixed bug in FailIf operators on Outcome<TObservation>.
+
+
+==== v0.4.3 (November 2, 2011) ====
+
+---- Features ----
+
+* Added FailIf, FailOn, and WithValue operators to Outcome<TObservation>
+  and Result<T, TObservation>.
+
+
+==== v0.4.2 (November 1, 2011) ====
+
+---- Features ----
+
+* Added special treatment of Unit for Maybe<T>, Outcome<TObservation>
+  and Result<T, TObservation>.
+
+* Many addtional operators added for Maybe<T>, Outcome<TObservation>,
+  and Result<T, TObservation>.
+
+
+==== v0.4.1 (October 31, 2011) ====
+
+---- Features ----
+
+* Added OfType and AsOutcome/AsResult operators for IOutcome and
+  IResult interfaces...
+
+* Added Combine operator to Result<T, TObservation> to combine
+  the outcome of other Outcome<TObservation> objects.
+
+
+==== v0.4.0 (October 31, 2011) ====
+
+---- Features ----
+
+* Result<T> is now the union of Maybe<T> and Outcome<T>
+
+---- Breaking Changes ----
+
+* Maybe<T> no longer carries an exception.
+
+* Maybe<T> operators Catch, ThrowOnException, and OnException no
+  longer exist.
+
+
+==== v0.3.5 (October 28, 2011) ====
+
+---- Features ----
+
+* Added overload of Recurse extension method that takes Func<T, T>.
+
+---- Breaking Changes ----
+
+* Maybe<T> and Result<T, TObservation> now treat nulls as NoValue.
+
+* NotNull and Coalesce operators for Maybe<T> are now gone.
+
+
+==== v0.3.4 (October 27, 2011) ====
+
+---- Features ----
+
+* Initial implementation of the Result<T, TObservation> monad
+
+* Outcome<TObservation> implementation has more operators.
+
+* Added implementation of Unit.
+
+---- Breaking Changes ----
+
+* Renamed Maybe<T> Express operator to Let.
+
+* Maybe<T> extension methods to support comprehension syntax have
+  been moved to the iSynaptic.Commons.Syntax namespace.
+
+* Outcome<TObservation> extensions methods to support comprehension
+  syntax have been moved to the iSynaptic.Commons.Syntax namespace.
+
+* Outcome<TObservation> SelectMany was renamed to InformMany to stay
+  consistent with operator names for Result<T, TObservation>
+
+
+==== v0.3.3 (October 7, 2011) ====
+
+---- Features ----
+
+* Maybe<T> Join operator no-longer evaluates the second maybe if the
+  first maybe does not have a value.
+
+* Added TrySelect operator to Maybe<T>.
+
+
+==== v0.3.2 (September 6, 2011) ====
+
+---- Bug Fixes ----
+
+* Fixed duplicate key bug for SymbolDictionary.Set method.
+
+
+==== v0.3.1 (September 2, 2011) ====
+
+---- Features ----
+
+* Added Check class.
+
+* Added & Operator to Outcome<T> monad.
+
+* Stubbed Result<TValue, TObservation> monad and Unit struct
+
+
+==== v0.3.0 (September 1, 2011) ====
+
+---- Features ----
+
+* iSynaptic.Commons.Data assembly is now collapsed into iSynaptic.Commons
+  assembly.
+
+* Added initial implementation of the Outcome<T> monad.
+
+* Created KeyedReaderWriter and SymbolDictionary classes.
+
+* All Maybe<T> operators have undergone performance optimizations.
+
+* Added Join and Unwrap Maybe<T> operators.
+
+* Added ToMaybe operator that can also do casting.
+
+* Added Squash operator to squash IEnumerable<Maybe<T>> into a IEnumerabe<T>
+  stream.
+
+* Added new ISymbol and ISymbol<T> interfaces to represent the concept of
+  symbols that other languages have.
+
+* Added Maybe.If overloads that emit the elseValue and use Maybe<T>.NoValue
+  if the predicate evaluates to false.
+
+* Added Maybe.ToEnumerable overloads that allow multiple Maybe<T> values to
+  be coerced into an IEnumerable<T>.
+
+* When inheriting from ExodataDeclaration, you can now completely override
+  how the declaration resolves data.
+
+* Exodata now supports the ability to non-deterministically retrieve data
+  (via Maybe<T>).
+
+* ExodataBindings can now carry a name; ambiguous Exodata resolution yields
+  a custom exception that provides a list of the ambiguous ExodataBindings.
+
+* ExodataSurrogate binding sources now allows multiple surrogates for the same
+  subject type and with arbitrary surrogate inheritance hierarchies.
+
+* ExodataRequest is now exposed to help in the creation of Exodata requests.
+
+---- Breaking Changes ----
+
+* Renamed interfaces and classes suffixed with Qualifier to Indexer
+
+* All Maybe.Extract implementations have been renamed to ValueOrDefault. This 
+  more accurately communicates the function's behavior.  This is similar to
+  IEnumerable<T>'s FirstOrDefault methods.
+ 
+* A new method, named Extract has been implemented that will throw an exception
+  if no value is available.  This is similar to IEnumerable<T>'s First method.
+
+* Maybe<T> no longer has an implicit cast from T to Maybe<T> - this eliminates
+  a number of surprises in connection with type inference.
+
+* Maybe<T> operators Cast, OfType, and AsMaybe now treat null input as NoValue
+
+* Maybe<T> operator Cast no longer throws an exception, it just yields one a
+  Maybe<T> that contains an InvalidCastException.
+
+* Maybe<T>.Express has been moved to the static Maybe class as an extension
+  method.  There are no more Maybe<T> operators directly implemented in the
+  Maybe<T> structure.
+
+* Moved EnumerableExtensions to iSynaptic.Commons.Linq namespace.
+
+* Renamed EnumerableExtensions.Flatten to Recurse to better reflect what the
+  method does.
+
+* Collapsed common ExodataDeclaration types in ExodataDeclarations namespace
+  into root namespace.
+
+* IExodataAttribute now has only one member: TryResolve.
+
+* IExodataBinding now only has one member: TryResolve.
+
+* IExodataRequest now exposes a Maybe<T> for the Context and Subject to enable
+  easy usage of Maybe operators.
+
+* The fluent interface used to define Exodata bindings now allows you to return
+  a Maybe<T> to represent the inability to resolve data.
+
+* Exodata resolution no-longer depends directly on ExodataDeclarations, it now
+  depends on Symbols.
+
+* Dropped direct support for LazyExodata - this behavior can be achieved easily
+  without direct support by Exodata.
+
+* Removed Specification pattern implementation.
+
+* Deleted IDependencyDeclaration - replaced with ISymbol.
+
+* Removed numerous Action<...>, Func<...>, and Predicate<...> extension methods.
+
+
+==== v0.2.1 (June 29, 2011) ====
+
+---- Breaking Changes ----
+
+* Removed the Maybe.Or operator that takes in just a T.  This overload makes
+  it difficult for the C# compiler to do type inference.
+
+
+
+==== v0.2.0 (June 29, 2011) ====
+
+* This release reflects some collaboration with Brian Beckman (Microsoft), and
+  research into CoMonads, and as a result Maybe<T> and some supporting
+  operators have gone through significant changes.
+  
+* The names of many of the Maybe<T> operators have been changed.  See breaking
+  changes below.
+
+* Removed the internal MaybeResult structure that Maybe<T> used to represent
+  the evaluated result of Maybe<T>.  Since Maybe<T> had a superset of
+  MaybeResult's public interface, Maybe<T> was refactored to directly store the
+  data that MaybeResult originally stored.
+
+---- Features ----
+
+* Express method on Maybe<T> allows the development of Maybe<T> operators that
+  need full visibility into the Maybe<T> structure.  Express adds lazy
+  evaluation semantics and memoization.  All other Maybe<T> operators are
+  written either directly or indirectly using Express.
+
+* Maybe<T> now has a constructor that takes a Func<Maybe<T>> to allow the
+  function to be lazily evaluated and viewed as a Maybe<T>.
+
+* Maybe<T> now has a number of operators named ThrowOn that allow you to define
+  conditions where an exception should be thrown upon evaluation of the
+  Maybe<T>.
+
+* Maybe<T> now has a GetHashCode implementation that takes in an 
+  IEqualityComparere<T> implementation.  This brings parity with the Equals
+  methods available on Maybe<T>.
+
+* Support for C# comprehension syntax is now supported for Maybe<T>.  Thanks to
+  Brian Beckman for the reference implementation of SelectMany.
+  
+  Design Note: SelectMany is the method that the C# compiler looks for when
+  translating LINQ comprehension syntax into method invocations.  Although,
+  LINQ comprehension syntax can be used when many different Monads, the
+  decision to call the monadic "bind" operation "SelectMany" semantically
+  couples C#'s support of Monads to the List Monad. In other words, "Many" in 
+  "SelectMany" assumes that there are many values that could be selected.  In
+  the case of Maybe<T>, there is at most one value to be selected, so 
+  "SelectMany" does not make sense semantically.  However, in order to support
+  C# comprehension syntax, the method name must be named SelectMany.  
+  Maybe<T>'s SelectMany method has the EditorBrowseableAttribute applied to it
+  so that SelectMany is not visible in IntelliSense (under standard Visual
+  Studio IDE configurations).  SelectMany and SelectMaybe are just aliases for
+  the Bind operator.
+
+* Created CompositeDisposable class to treat many disposables as one. The
+  DisposableContext has now been refactored to make use of this class.
+
+  Design Note: CompositeDisposable may eventually be collapsed back into
+  DisposableContext once DisposableContext (and all Scope<T> implementations)
+  can be created as a explicit context and not only a thread or app-domain
+  static context.
+
+* Created OrderByPriorities operator on IEnumerable<T>. You can provide one or
+  more predicates that give higher sort priority to the items where the
+  predicate returns true.
+
+* Added ToMaybe() operator that enables easy creation of Maybe<T> from
+  arbitrary values.  This is an alias to the Maybe.Return operator, while
+  allowing it to be used as an extension method.
+
+* Added If extension method to Maybe<T> that allows a new Maybe<T> to be
+  created based on a predicate.
+
+* Added a Finally extension method to Maybe<T> to allow cleanup logic to be
+  executed after the Maybe<T> has been evaluated.
+
+* Added a ToEnumerable operator to Maybe<T> to allow transition from the Maybe
+  monad to the List monad.  If the Maybe<T> has a value, the enumerable will
+  yield only that one value.  If the Maybe<T> has no value, the enumerable will
+  yield an empty stream.  If the Maybe<T> contains an exception, the enumerable
+  will throw the exception upon every enumeration.
+
+* Added AsMaybe operators that treat IMaybe<T> and IMaybe implementations as
+  Maybe<T> or Maybe<object> respectively and allow use of operators that rely
+  on Maybe<T>.
+
+  Design Note: The reason for implementing the Maybe Monad as a structure was
+  to keep the core type, Maybe<T>, very lightweight.  Storing simple values
+  such as integers in a Maybe<T> incurs very little overhead
+  (e.g Maybe.Return(42)). As such, all of the operators are implemented using
+  the Maybe<T> structure, and not the IMaybe<T> or IMaybe interface.  The
+  interfaces are provided to support co-variant and non-generic scenarios.
+
+* Cloneable<T> no longer prevents cloning of types that have IntPtr and UIntPtr
+  fields.  In the future, Cloneable<T> may no longer prevent cloning objects
+  that have delegates as fields.
+
+* EnlistmentScope now has virtual members to enable alternative enlisted item
+  management.
+
+* Added Flip and Curry extension methods to Func<...> and Action.
+
+* Input validation was added to numerous methods throughout the library.
+
+---- Breaking Changes ----
+
+* Exceptions thrown when evaluating the result of a Maybe<T> will now escape
+  the Maybe<T>.  This brings parity between Maybe<T> and IEnumerable<T>'s
+  treatment of exceptions.  A Catch() operator has been implemented which will
+  catch exceptions thrown from up-stream Maybe<T> operators.
+
+* The Unsafe method on Maybe<T> has been removed. This allowed the construction
+  of Maybe<T> that did not have exception protection.  Since exception 
+  protection no longer implemented, this method was removed.  Additionally,
+  other methods used Unsafe because they wanted access to the Exception, 
+  HasValue, and Value properties to implement their logic. The Express method
+  now provides this capability.
+
+* The Select operation that takes a Func<T, Maybe<TResult>> has been renamed to
+  SelectMaybe, as it was always an alias of Bind.
+
+* Maybe.Return has been renamed to Maybe.Extract.  Since CoMonads have a
+  "extract" operation that take a CoMonad and extracts a T, it made more sense
+  to call this operation Extract.
+
+* Maybe.Value has been renamed to Maybe.Return.  Since Monads have a "return"
+  operation that takes a T and puts it into the Monad, it made more sense to
+  call this operation Return.
+
+* Maybe.When overloads have been simplified by removing the ones that take
+  Func<T, Maybe<T>> as an argument.  Maybe.Defer can be used in with Maybe.When
+  to achieve the same behavior.
+
+* Maybe.ThrowOn now takes one less argument.  It now takes a function that
+  optionally returns an exception.  If it returns an exception, the exception
+  is thrown.  If it returns null, nothing occurs.
+
+* The Maybe.Using operator that takes an IDisposable as its first argument has
+  been removed.  Using Return and the new Finally method can be used to achieve
+  the same behavior.
+
+* Maybe<T>.Bind and Maybe<T>.Select have been moved to the Maybe class and
+  turned into extension methods.  This allows other extension methods to be
+  authored that deals with Maybe<T> when T is a more specific or constrained
+  type.
+
+* Many of the OnException overloads have been renamed to Suppress.  This brings
+  parity with the other OnXXX methods that only have side-effects and do not
+  change the resulting value.
+
+* BaseReadOnlyDictionary no longer allows you to override the IsReadOnly
+  property. This should always return true, and this prevents derived
+  implementations from breaking this invariant.
+
+* Renamed Zip to ZipAll to prevent naming conflict with existing IEnumerable<T>
+  extension methods.
+
+* Removed ThrowPreservingCallStack Exception extension method, since the 
+  implementation doesn't truly preserve the call stack.  Replaced with the
+  ThrowAsInnerExceptionIfNeeded extension method, which if used against an
+  exception that has already been thrown once, clones the exception, and sets
+  the clone's InnerException to the original before throwing the clone. This
+  allows original call stack to be preserved verbatim (albeit in the
+  InnerException), while not changing the exception type or message that is
+  being "re-thrown".
+
+* Renamed extension method SynchronizeOn to Synchronize for both Func<...> and 
+  Maybe<T> so that it is not confused which an operation that forces execution
+  to happen on a different thread (similar to how Task<TResult> and
+  IObservable<T> schedulers do).

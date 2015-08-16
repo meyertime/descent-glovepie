@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>iSynaptic.Commons</id>
+    <version>0.4.32</version>
+    <authors>Jordan Terrell</authors>
+    <owners>Jordan Terrell</owners>
+    <licenseUrl>https://github.com/iSynaptic/iSynaptic.Commons/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/iSynaptic/iSynaptic.Commons</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Library of common functionality in functional programming style.</description>
+    <language>en-US</language>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" targetFramework=".NETFramework4.5" />
+      <frameworkAssembly assemblyName="System.Core" targetFramework=".NETFramework4.5" />
+      <frameworkAssembly assemblyName="System.Transactions" targetFramework=".NETFramework4.5" />
+      <frameworkAssembly assemblyName="System.Xml" targetFramework=".NETFramework4.5" />
+    </frameworkAssemblies>
+    <references>
+      <reference file="iSynaptic.Commons.dll" />
+    </references>
+  </metadata>
+</package>

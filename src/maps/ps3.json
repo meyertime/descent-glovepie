@@ -1,0 +1,39 @@
+{
+	"input": "Sixaxis1",
+
+	"shift": [
+		"PS",
+		"Select",
+		"Start"
+	],
+
+	"axis": {
+		"LeftStickX": "PPJoy1.Analog0",
+		"LeftStickY": "-PPJoy1.Analog1",
+		"RightStickX": "PPJoy1.Analog2",
+		"RightStickY": "PPJoy1.Analog3"
+	},
+
+	"button": {
+		"R1": "PPJoy1.Digital0",
+		"Cross": {
+			"normal": "Keyboard.Enter",
+			"Select": "~Six",
+			"PS": "~Alt+F1"
+		},
+		"Square": {
+			"normal": "Keyboard.Space",
+			"Select": "~Nine",
+			"PS": "~F2"
+		}
+	},
+
+	"throttle": {
+		axis: "PPJoy1.Analog4",
+		button: "PPJoy1.Digital6",
+		forwardDigital: "L2",
+		forwardAnalog: "L2Analog",
+		reverseDigital: "L1",
+		reverseAnalog: "L1Analog"
+	}
+}
