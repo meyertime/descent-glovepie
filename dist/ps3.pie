@@ -2,6 +2,70 @@
 GlovePIE script for playing Descent 1 & 2 using a PS3 controller
 Apache License 2.0
 Homepage: https://github.com/deftflux/descent-glovepie
+
+
+KEYBOARD MAPPINGS
+
+PS3 Button   Key          Suggested Assignment
+----------------------------------------------
+D-Pad Up     Up arrow     Fire flare
+D-Pad Down   Down arrow   Rear view
+D-Pad Left   Left arrow   Cycle primary
+D-Pad Right  Right arrow  Cycle secondary
+PS+Triangle  Tab key      Automap
+Cross        Enter key    Drop bomb
+Square       Space bar    Toggle bomb (Menu check boxes)
+PS           Escape key   (Abort game / back out of menu)
+
+
+JOYSTICK BUTTON MAPPINGS
+
+PS3 Button  Joystick  Suggested Assignment
+-----------------------------------------
+R1          Button 0  Fire primary    
+R2          Button 1  Fire secondary
+L3          Button 2  Bank left
+R3          Button 3  Bank right
+Circle      Button 4  Convert energy to shield (D2)
+Triangle    Button 5  Headlight (D2)
+L1+L2       Button 6  Afterburner (D2)
+
+
+JOYSTICK AXIS MAPPINGS
+
+PS3 Axis       Joystick  Suggested Assignment
+--------------------------------------------
+Left Stick X   Axis 0    Slide L/R
+Left Stick Y   Axis 1    Slide U/D
+Right Stick X  Axis 2    Turn L/R
+Right Stick Y  Axis 3    Pitch U/D
+L1 / L2        Axis 4    Throttle
+
+
+KEYBOARD MACROS
+
+PS3 Combo        Keystroke   Game Function
+--------------------------------------------------
+Start+Down       1           Laser / Super Laser
+Start+Left       2           Vulcan / Guass
+Start+Up         3           Spread / Helix
+Start+Right      4           Plasma / Phoenix
+Start+Select     5           Fusion / Omega
+Select+Cross     6           Concussion / Flash
+Select+Circle    7           Homing / Guided
+Select+Triangle  8           Prox bomb / Smart bomb
+Select+Square    9           Smart / Mercury
+Select+Start     0           Mega / Earthshaker
+PS+Cross         Alt-F1      Fast Save (rebirth)
+PS+Circle        Alt-F3      Load Game
+PS+Square        F2          Options
+PS+Left          Shift-F1    Cycle left camera (D2)
+PS+Right         Shift-F2    Cycle right camera (D2)
+
+Right now, there is room to program keyboard macros for PS+ the following buttons:
+L1, L2, R1, R2, L3, R3, Up, Down, Start, Select
+The code for these is commented out.
+
 */
 
 
@@ -178,13 +242,13 @@ if (var.ButtonStateTriangle == 2) {
     var.ButtonStateUp := -1;
     Keyboard. := true;
     Keyboard. := false;
-}*/
+}
 if (var.ButtonStateDown == 2) {
     var.ButtonStateDown := -1;
     Keyboard.F4 := true;
     Keyboard.F4 := false;
     // TODO: Auto-enter marker name
-}
+}*/
 if (var.ButtonStateLeft == 2) {
     var.ButtonStateLeft := -1;
     Keyboard.Shift := true;
