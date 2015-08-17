@@ -1,0 +1,75 @@
+{
+	input: "XInput1",
+
+	shift: [
+		"Back",
+		"Start"
+	],
+
+	axis: {
+		Joy1X: "PPJoy1.Analog0",
+		Joy1Y: "-PPJoy1.Analog1",
+		Joy2X: "PPJoy1.Analog2",
+		Joy2Y: "PPJoy1.Analog3"
+	},
+
+	button: {
+	    A: {
+			normal: "Keyboard.Enter",
+			Back: "~Six",
+			Start: "~Alt-F1"
+		},
+		B: {
+			normal: "PPJoy1.Digital4",
+			Back: "~Seven",
+			Start: "~Alt-F3"
+		},
+		X: {
+			normal: "Keyboard.Space",
+			Back: "~Nine",
+			Start: "~F2"
+		},
+		Y: {
+			normal: "PPJoy.Digital5",
+			Back: "~Nine",
+			Start: "~Tab"
+		},
+        Up: {
+			normal: "Keyboard.Up",
+			Start: "~Three"
+		},
+		Down: {
+			normal: "Keyboard.Down",
+			Start: "~One"
+		},
+		Left: {
+			normal: "Keyboard.Left",
+			Start: "~Two",
+			Back: "~Shift-F1"
+		},
+		Right: {
+			normal: "Keyboard.Right",
+			Start: "~Four",
+			Back: "~Shift-F2"
+		},
+		RightShoulder: "PPJoy1.Digital0",
+		RightTrigger: "PPJoy1.Digital1",
+		LeftThumb: "PPJoy1.Digital2",
+		RightThumb: "PPJoy1.Digital3",
+		Back: {
+			Start: "~Five"
+		},
+		Start: {
+			normal: "~Escape",
+			Back: "~Zero"
+		}
+	},
+
+	throttle: {
+		axis: "PPJoy1.Analog4",
+		button: "PPJoy1.Digital6",
+		forwardAnalog: "LeftTrigger",
+		reverseDigital: "LeftShoulder",
+		analogThreshold: 0.1
+	}
+}
