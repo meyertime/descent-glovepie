@@ -23,5 +23,8 @@ namespace DescentGlovePie.Generator
 
         [JsonProperty("reverseAnalog")]
         public string ReverseAnalogInput { get; set; }
+
+        [JsonProperty("analogThreshold")]
+        public double? AnalogThreshold { get; set; }
     }
 }

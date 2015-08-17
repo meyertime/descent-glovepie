@@ -1,8 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using RazorEngine;
+using RazorEngine.Configuration;
 using RazorEngine.Templating;
+using RazorEngine.Text;
 using iSynaptic.Commons;
 
 namespace DescentGlovePie.Generator
@@ -36,6 +37,8 @@ namespace DescentGlovePie.Generator
         {
             private const string TemplateName = "GlovePieScript.cshtml";
 
+            private IRazorEngineService _razor;
+
             public void Initialize()
             {
                 string templateSource;
@@ -51,14 +54,21 @@ namespace DescentGlovePie.Generator
                 // This template uses iSynaptic.Commons, so let's make sure the runtime loads it
                 templateSource = templateSource.ToMaybe().Value;
 
-                Engine.Razor.Compile(templateSource, TemplateName, typeof(MapInfo));
+                var config = new TemplateServiceConfiguration
+                {
+                    EncodedStringFactory = new RawStringFactory()
+                };
+                
+                _razor = RazorEngineService.Create(config);
+
+                _razor.Compile(templateSource, TemplateName, typeof(MapInfo));
             }
 
             public string Generate(MapInfo map)
             {
                 var sb = new StringBuilder();
                 var writer = new StringWriter(sb);
-                Engine.Razor.Run(TemplateName, writer, typeof(MapInfo), map);
+                _razor.Run(TemplateName, writer, typeof(MapInfo), map);
                 writer.Flush();
                 return sb.ToString();
             }

@@ -23,7 +23,7 @@ Project Home: https://github.com/deftflux/descent-glovepie
         inputPrefix += ".";
     }
 
-    var shiftButtons = Model.Map.ShiftButtons.ToList();
+    var shiftButtons = Model.Map.ShiftButtons.ToMaybe().Select(s => s.ToList()).ValueOrDefault(() => new List<string>());
     var nonShiftButtons = Model.Map.ButtonMappings.Select(m => m.Input)
                                .Concat(Model.Map.ThrottleMapping.ToMaybe().Select(t => new[] {t.ForwardDigitalInput ?? t.ForwardAnalogInput, t.ReverseDigitalInput ?? t.ReverseAnalogInput}).ValueOrDefault(() => new string[0]))
                                .Distinct()
@@ -39,8 +39,6 @@ Project Home: https://github.com/deftflux/descent-glovepie
     {
         buttonStateShift[shiftButtons[i]] = i + 2;
     }
-
-    const string analogButtonThreshold = "0.1";
 
     Func<string, string> getNormalButtonCondition = (string button) =>
     {
@@ -148,15 +146,20 @@ if (not var.Initialized) {
 {
     @:// Throttle mapping:
     var mapping = Model.Map.ThrottleMapping;
+    string analogThreshold = mapping.AnalogThreshold.GetValueOrDefault(0.1).ToString();
     var forwardCondition = (mapping.ForwardDigitalInput != null)
         ? getNormalButtonCondition(mapping.ForwardDigitalInput)
-        : ("(" + inputPrefix + mapping.ForwardAnalogInput + " > " + analogButtonThreshold + ")");
+        : ("(" + inputPrefix + mapping.ForwardAnalogInput + " > " + analogThreshold + ")");
     var reverseCondition = (mapping.ReverseDigitalInput != null)
         ? getNormalButtonCondition(mapping.ReverseDigitalInput)
-        : ("(" + inputPrefix + mapping.ReverseAnalogInput + " > " + analogButtonThreshold + ")");
-    var forwardInput = mapping.ForwardAnalogInput ?? mapping.ForwardDigitalInput;
-    var reverseInput = mapping.ReverseAnalogInput ?? mapping.ReverseDigitalInput;
-    @:@(mapping.AxisOutput) := ((-@(inputPrefix)@(forwardInput) * @(forwardCondition)) + (@(inputPrefix)@(reverseInput) * @(reverseCondition) * (not @(forwardCondition))));
+        : ("(" + inputPrefix + mapping.ReverseAnalogInput + " > " + analogThreshold + ")");
+    var forwardInput = (mapping.ForwardAnalogInput != null)
+        ? inputPrefix + mapping.ForwardAnalogInput
+        : "1";
+    var reverseInput = (mapping.ReverseAnalogInput != null)
+        ? inputPrefix + mapping.ReverseAnalogInput
+        : "1";
+    @:@(mapping.AxisOutput) := ((-@(forwardInput) * @(forwardCondition)) + (@(reverseInput) * @(reverseCondition) * (not @(forwardCondition))));
     if (mapping.ButtonOutput != null)
     {
         @:@(mapping.ButtonOutput) := (@(forwardCondition) and @(reverseCondition));
