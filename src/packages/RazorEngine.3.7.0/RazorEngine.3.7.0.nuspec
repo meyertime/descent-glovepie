@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>RazorEngine</id>
+    <version>3.7.0</version>
+    <title>RazorEngine</title>
+    <authors>Matthew Abbott,  Ben Dornis,  Matthias Dittrich</authors>
+    <owners>Matthew Abbott,  Ben Dornis,  Matthias Dittrich</owners>
+    <licenseUrl>https://github.com/Antaris/RazorEngine/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/Antaris/RazorEngine</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>RazorEngine - A Templating Engine based on the Razor parser.</description>
+    <summary>Simple templating using Razor syntax.</summary>
+    <releaseNotes>add InvalidatingCachingProvider, ResolvePathTemplateManager and WatchingResolvePathTemplateManager, fixes https://github.com/Antaris/RazorEngine/issues/250.
+Switched to Apache 2: https://github.com/Antaris/RazorEngine/issues/190
+Missing feature (compared to 3.6): Configuration fallback to XML.</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <language />
+    <tags>C# razor template engine programming</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.0">
+        <dependency id="Microsoft.AspNet.Razor" version="[2.0.30506.0]" />
+      </group>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Microsoft.AspNet.Razor" version="3.0.0" />
+      </group>
+    </dependencies>
+    <references>
+      <reference file="RazorEngine.dll" />
+    </references>
+  </metadata>
+</package>

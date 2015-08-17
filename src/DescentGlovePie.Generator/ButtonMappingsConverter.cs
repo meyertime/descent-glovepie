@@ -61,7 +61,7 @@ namespace DescentGlovePie.Generator
                 s = s.Substring(1);
                 return new KeyboardMacroOutput
                 {
-                    Outputs = s.Split(' ').Select(t => t.Split('+')).ToArray()
+                    Outputs = s.Split(' ').Select(t => t.Split('-')).ToArray()
                 };
             }
 
@@ -98,7 +98,7 @@ namespace DescentGlovePie.Generator
                 {
                     shiftMappings.Add(new ShiftButtonMapping
                     {
-                        ShiftInput = input,
+                        ShiftInput = shiftInput,
                         Output = StringToMappingOutput(output)
                     });
                 }

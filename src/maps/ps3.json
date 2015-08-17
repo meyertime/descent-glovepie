@@ -15,16 +15,54 @@
 	},
 
 	"button": {
-		"R1": "PPJoy1.Digital0",
-		"Cross": {
+	    "Cross": {
 			"normal": "Keyboard.Enter",
 			"Select": "~Six",
-			"PS": "~Alt+F1"
+			"PS": "~Alt-F1"
+		},
+		"Circle": {
+			"normal": "PPJoy1.Digital4",
+			"Select": "~Seven",
+			"PS": "~Alt-F3"
 		},
 		"Square": {
 			"normal": "Keyboard.Space",
 			"Select": "~Nine",
 			"PS": "~F2"
+		},
+		"Triangle": {
+			"normal": "PPJoy.Digital5",
+			"Select": "~Nine",
+			"PS": "~Tab"
+		},
+        "Up": {
+			"normal": "Keyboard.Up",
+			"Start": "~Three"
+		},
+		"Down": {
+			"normal": "Keyboard.Down",
+			"Start": "~One"
+		},
+		"Left": {
+			"normal": "Keyboard.Left",
+			"Start": "~Two",
+			"PS": "~Shift-F1"
+		},
+		"Right": {
+			"normal": "Keyboard.Right",
+			"Start": "~Four",
+			"PS": "~Shift-F2"
+		},
+		"R1": "PPJoy1.Digital0",
+		"R2": "PPJoy1.Digital1",
+		"L3": "PPJoy1.Digital2",
+		"R3": "PPJoy1.Digital3",
+		"PS": "~Escape",
+		"Select": {
+			"Start": "~Five"
+		},
+		"Start": {
+			"Select": "~Zero"
 		}
 	},
 
