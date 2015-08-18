@@ -32,7 +32,7 @@
 		},
 		"Triangle": {
 			"normal": "PPJoy.Digital5",
-			"Select": "~Nine",
+			"Select": "~Eight",
 			"PS": "~Tab"
 		},
         "Up": {
