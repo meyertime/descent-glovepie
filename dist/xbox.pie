@@ -21,7 +21,7 @@ Start        Escape key   (Abort game / back out of menu)
 JOYSTICK BUTTON MAPPINGS
 
 XBOX Button  Joystick  Suggested Assignment
------------------------------------------
+-------------------------------------------
 RS           Button 0  Fire primary    
 RT           Button 1  Fire secondary
 Left Thumb   Button 2  Bank left
@@ -33,8 +33,8 @@ LS+LT        Button 6  Afterburner (D2)
 
 JOYSTICK AXIS MAPPINGS
 
-XBOX Axis       Joystick  Suggested Assignment
---------------------------------------------
+XBOX Axis      Joystick  Suggested Assignment
+---------------------------------------------
 Left Stick X   Axis 0    Slide L/R
 Left Stick Y   Axis 1    Slide U/D
 Right Stick X  Axis 2    Turn L/R
@@ -56,9 +56,9 @@ Back+B        7           Homing / Guided
 Back+Y        8           Prox bomb / Smart bomb
 Back+X        9           Smart / Mercury
 Back+Start    0           Mega / Earthshaker
-Start+Cross   Alt-F1      Fast Save (rebirth)
-Start+Circle  Alt-F3      Load Game
-Start+Square  F2          Options
+Start+A       Alt-F1      Fast Save (rebirth)
+Start+B       Alt-F3      Load Game
+Start+X       F2          Options
 Back+Left     Shift-F1    Cycle left camera (D2)
 Back+Right    Shift-F2    Cycle right camera (D2)
 
