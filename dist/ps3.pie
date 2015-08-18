@@ -320,8 +320,8 @@ if (var.ButtonStateSquare == 3) {
 // Select+Triangle
 if (var.ButtonStateTriangle == 3) {
     var.ButtonStateTriangle := -1;
-    Keyboard.Nine := true;
-    Keyboard.Nine := false;
+    Keyboard.Eight := true;
+    Keyboard.Eight := false;
 }
 
 // Select+Start
