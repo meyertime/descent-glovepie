@@ -31,7 +31,7 @@
 		},
 		Y: {
 			normal: "PPJoy.Digital5",
-			Back: "~Nine",
+			Back: "~Eight",
 			Start: "~Tab"
 		},
         Up: {

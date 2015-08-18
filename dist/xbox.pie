@@ -13,8 +13,8 @@ D-Pad Down   Down arrow   Rear view
 D-Pad Left   Left arrow   Cycle primary
 D-Pad Right  Right arrow  Cycle secondary
 Start+Y      Tab key      Automap
-X            Enter key    Drop bomb
-A            Space bar    Toggle bomb (Menu check boxes)
+A            Enter key    Drop bomb
+X            Space bar    Toggle bomb (Menu check boxes)
 Start        Escape key   (Abort game / back out of menu)
 
 
@@ -26,8 +26,8 @@ RS           Button 0  Fire primary
 RT           Button 1  Fire secondary
 Left Thumb   Button 2  Bank left
 Right Thumb  Button 3  Bank right
-Y            Button 4  Convert energy to shield (D2)
-B            Button 5  Headlight (D2)
+B            Button 4  Convert energy to shield (D2)
+Y            Button 5  Headlight (D2)
 LS+LT        Button 6  Afterburner (D2)
 
 
@@ -51,10 +51,10 @@ Start+Left    2           Vulcan / Guass
 Start+Up      3           Spread / Helix
 Start+Right   4           Plasma / Phoenix
 Start+Back    5           Fusion / Omega
-Back+X        6           Concussion / Flash
-Back+Y        7           Homing / Guided
-Back+B        8           Prox bomb / Smart bomb
-Back+A        9           Smart / Mercury
+Back+A        6           Concussion / Flash
+Back+B        7           Homing / Guided
+Back+Y        8           Prox bomb / Smart bomb
+Back+X        9           Smart / Mercury
 Back+Start    0           Mega / Earthshaker
 Start+Cross   Alt-F1      Fast Save (rebirth)
 Start+Circle  Alt-F3      Load Game
@@ -255,8 +255,8 @@ if (var.ButtonStateX == 2) {
 // Back+Y
 if (var.ButtonStateY == 2) {
     var.ButtonStateY := -1;
-    Keyboard.Nine := true;
-    Keyboard.Nine := false;
+    Keyboard.Eight := true;
+    Keyboard.Eight := false;
 }
 
 // Back+Left
