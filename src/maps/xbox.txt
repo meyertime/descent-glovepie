@@ -1,0 +1,58 @@
+
+KEYBOARD MAPPINGS
+
+XBOX Button  Key          Suggested Assignment
+----------------------------------------------
+D-Pad Up     Up arrow     Fire flare
+D-Pad Down   Down arrow   Rear view
+D-Pad Left   Left arrow   Cycle primary
+D-Pad Right  Right arrow  Cycle secondary
+Start+Y      Tab key      Automap
+X            Enter key    Drop bomb
+A            Space bar    Toggle bomb (Menu check boxes)
+Start        Escape key   (Abort game / back out of menu)
+
+
+JOYSTICK BUTTON MAPPINGS
+
+XBOX Button  Joystick  Suggested Assignment
+-----------------------------------------
+RS           Button 0  Fire primary    
+RT           Button 1  Fire secondary
+Left Thumb   Button 2  Bank left
+Right Thumb  Button 3  Bank right
+Y            Button 4  Convert energy to shield (D2)
+B            Button 5  Headlight (D2)
+LS+LT        Button 6  Afterburner (D2)
+
+
+JOYSTICK AXIS MAPPINGS
+
+XBOX Axis       Joystick  Suggested Assignment
+--------------------------------------------
+Left Stick X   Axis 0    Slide L/R
+Left Stick Y   Axis 1    Slide U/D
+Right Stick X  Axis 2    Turn L/R
+Right Stick Y  Axis 3    Pitch U/D
+LS / LT        Axis 4    Throttle
+
+
+KEYBOARD MACROS
+
+XBOX Combo    Keystroke   Game Function
+-------------------------------------------------
+Start+Down    1           Laser / Super Laser
+Start+Left    2           Vulcan / Guass
+Start+Up      3           Spread / Helix
+Start+Right   4           Plasma / Phoenix
+Start+Back    5           Fusion / Omega
+Back+X        6           Concussion / Flash
+Back+Y        7           Homing / Guided
+Back+B        8           Prox bomb / Smart bomb
+Back+A        9           Smart / Mercury
+Back+Start    0           Mega / Earthshaker
+Start+Cross   Alt-F1      Fast Save (rebirth)
+Start+Circle  Alt-F3      Load Game
+Start+Square  F2          Options
+Back+Left     Shift-F1    Cycle left camera (D2)
+Back+Right    Shift-F2    Cycle right camera (D2)
