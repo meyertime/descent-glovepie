@@ -1,6 +1,6 @@
 # descent-glovepie
 
-GlovePIE scripts for playing Descent with gamepads, such as the PS3 controller.
+GlovePIE scripts for playing Descent with gamepads.
 
 Documentation is on the wiki: [https://github.com/deftflux/descent-glovepie/wiki](https://github.com/deftflux/descent-glovepie/wiki)
 
