@@ -108,8 +108,6 @@ if (Sixaxis1.PS and var.ButtonStatePS == 0) {
     if (var.ShiftState == 1) {
         var.ShiftState := 2;
         var.ShiftDefault := true;
-    } else {
-        var.ShiftDefault := false;
     }
     var.ButtonStatePS := var.ShiftState;
 }
@@ -119,8 +117,6 @@ if (Sixaxis1.Select and var.ButtonStateSelect == 0) {
     if (var.ShiftState == 1) {
         var.ShiftState := 3;
         var.ShiftDefault := true;
-    } else {
-        var.ShiftDefault := false;
     }
     var.ButtonStateSelect := var.ShiftState;
 }
@@ -130,8 +126,6 @@ if (Sixaxis1.Start and var.ButtonStateStart == 0) {
     if (var.ShiftState == 1) {
         var.ShiftState := 4;
         var.ShiftDefault := true;
-    } else {
-        var.ShiftDefault := false;
     }
     var.ButtonStateStart := var.ShiftState;
 }
@@ -142,85 +136,71 @@ if (Sixaxis1.Start and var.ButtonStateStart == 0) {
 // Cross
 if (Sixaxis1.Cross and var.ButtonStateCross == 0) {
     var.ButtonStateCross := var.ShiftState;
-    var.ShiftDefault := false;
 }
 
 // Circle
 if (Sixaxis1.Circle and var.ButtonStateCircle == 0) {
     var.ButtonStateCircle := var.ShiftState;
-    var.ShiftDefault := false;
 }
 
 // Square
 if (Sixaxis1.Square and var.ButtonStateSquare == 0) {
     var.ButtonStateSquare := var.ShiftState;
-    var.ShiftDefault := false;
 }
 
 // Triangle
 if (Sixaxis1.Triangle and var.ButtonStateTriangle == 0) {
     var.ButtonStateTriangle := var.ShiftState;
-    var.ShiftDefault := false;
 }
 
 // Up
 if (Sixaxis1.Up and var.ButtonStateUp == 0) {
     var.ButtonStateUp := var.ShiftState;
-    var.ShiftDefault := false;
 }
 
 // Down
 if (Sixaxis1.Down and var.ButtonStateDown == 0) {
     var.ButtonStateDown := var.ShiftState;
-    var.ShiftDefault := false;
 }
 
 // Left
 if (Sixaxis1.Left and var.ButtonStateLeft == 0) {
     var.ButtonStateLeft := var.ShiftState;
-    var.ShiftDefault := false;
 }
 
 // Right
 if (Sixaxis1.Right and var.ButtonStateRight == 0) {
     var.ButtonStateRight := var.ShiftState;
-    var.ShiftDefault := false;
 }
 
 // R1
 if (Sixaxis1.R1 and var.ButtonStateR1 == 0) {
     var.ButtonStateR1 := var.ShiftState;
-    var.ShiftDefault := false;
 }
 
 // R2
 if (Sixaxis1.R2 and var.ButtonStateR2 == 0) {
     var.ButtonStateR2 := var.ShiftState;
-    var.ShiftDefault := false;
 }
 
 // L3
 if (Sixaxis1.L3 and var.ButtonStateL3 == 0) {
     var.ButtonStateL3 := var.ShiftState;
-    var.ShiftDefault := false;
 }
 
 // R3
 if (Sixaxis1.R3 and var.ButtonStateR3 == 0) {
     var.ButtonStateR3 := var.ShiftState;
-    var.ShiftDefault := false;
 }
 
 // L2
 if (Sixaxis1.L2 and var.ButtonStateL2 == 0) {
     var.ButtonStateL2 := var.ShiftState;
-    var.ShiftDefault := false;
 }
 
 // L1
 if (Sixaxis1.L1 and var.ButtonStateL1 == 0) {
     var.ButtonStateL1 := var.ShiftState;
-    var.ShiftDefault := false;
 }
 
 
@@ -249,6 +229,7 @@ PPJoy1.Digital6 := (InSet(var.ButtonStateL2, 1, 2, 3, 4) and InSet(var.ButtonSta
 // PS+Cross
 if (var.ButtonStateCross == 2) {
     var.ButtonStateCross := -1;
+    var.ShiftDefault := false;
     Keyboard.Alt := true;
     Keyboard.F1 := true;
     Keyboard.F1 := false;
@@ -258,6 +239,7 @@ if (var.ButtonStateCross == 2) {
 // PS+Circle
 if (var.ButtonStateCircle == 2) {
     var.ButtonStateCircle := -1;
+    var.ShiftDefault := false;
     Keyboard.Alt := true;
     Keyboard.F3 := true;
     Keyboard.F3 := false;
@@ -267,6 +249,7 @@ if (var.ButtonStateCircle == 2) {
 // PS+Square
 if (var.ButtonStateSquare == 2) {
     var.ButtonStateSquare := -1;
+    var.ShiftDefault := false;
     Keyboard.F2 := true;
     Keyboard.F2 := false;
 }
@@ -274,6 +257,7 @@ if (var.ButtonStateSquare == 2) {
 // PS+Triangle
 if (var.ButtonStateTriangle == 2) {
     var.ButtonStateTriangle := -1;
+    var.ShiftDefault := false;
     Keyboard.Tab := true;
     Keyboard.Tab := false;
 }
@@ -281,6 +265,7 @@ if (var.ButtonStateTriangle == 2) {
 // PS+Left
 if (var.ButtonStateLeft == 2) {
     var.ButtonStateLeft := -1;
+    var.ShiftDefault := false;
     Keyboard.Shift := true;
     Keyboard.F1 := true;
     Keyboard.F1 := false;
@@ -290,6 +275,7 @@ if (var.ButtonStateLeft == 2) {
 // PS+Right
 if (var.ButtonStateRight == 2) {
     var.ButtonStateRight := -1;
+    var.ShiftDefault := false;
     Keyboard.Shift := true;
     Keyboard.F2 := true;
     Keyboard.F2 := false;
@@ -299,6 +285,7 @@ if (var.ButtonStateRight == 2) {
 // Select+Cross
 if (var.ButtonStateCross == 3) {
     var.ButtonStateCross := -1;
+    var.ShiftDefault := false;
     Keyboard.Six := true;
     Keyboard.Six := false;
 }
@@ -306,6 +293,7 @@ if (var.ButtonStateCross == 3) {
 // Select+Circle
 if (var.ButtonStateCircle == 3) {
     var.ButtonStateCircle := -1;
+    var.ShiftDefault := false;
     Keyboard.Seven := true;
     Keyboard.Seven := false;
 }
@@ -313,6 +301,7 @@ if (var.ButtonStateCircle == 3) {
 // Select+Square
 if (var.ButtonStateSquare == 3) {
     var.ButtonStateSquare := -1;
+    var.ShiftDefault := false;
     Keyboard.Nine := true;
     Keyboard.Nine := false;
 }
@@ -320,6 +309,7 @@ if (var.ButtonStateSquare == 3) {
 // Select+Triangle
 if (var.ButtonStateTriangle == 3) {
     var.ButtonStateTriangle := -1;
+    var.ShiftDefault := false;
     Keyboard.Eight := true;
     Keyboard.Eight := false;
 }
@@ -327,6 +317,7 @@ if (var.ButtonStateTriangle == 3) {
 // Select+Start
 if (var.ButtonStateStart == 3) {
     var.ButtonStateStart := -1;
+    var.ShiftDefault := false;
     Keyboard.Zero := true;
     Keyboard.Zero := false;
 }
@@ -334,6 +325,7 @@ if (var.ButtonStateStart == 3) {
 // Start+Up
 if (var.ButtonStateUp == 4) {
     var.ButtonStateUp := -1;
+    var.ShiftDefault := false;
     Keyboard.Three := true;
     Keyboard.Three := false;
 }
@@ -341,6 +333,7 @@ if (var.ButtonStateUp == 4) {
 // Start+Down
 if (var.ButtonStateDown == 4) {
     var.ButtonStateDown := -1;
+    var.ShiftDefault := false;
     Keyboard.One := true;
     Keyboard.One := false;
 }
@@ -348,6 +341,7 @@ if (var.ButtonStateDown == 4) {
 // Start+Left
 if (var.ButtonStateLeft == 4) {
     var.ButtonStateLeft := -1;
+    var.ShiftDefault := false;
     Keyboard.Two := true;
     Keyboard.Two := false;
 }
@@ -355,6 +349,7 @@ if (var.ButtonStateLeft == 4) {
 // Start+Right
 if (var.ButtonStateRight == 4) {
     var.ButtonStateRight := -1;
+    var.ShiftDefault := false;
     Keyboard.Four := true;
     Keyboard.Four := false;
 }
@@ -362,6 +357,7 @@ if (var.ButtonStateRight == 4) {
 // Start+Select
 if (var.ButtonStateSelect == 4) {
     var.ButtonStateSelect := -1;
+    var.ShiftDefault := false;
     Keyboard.Five := true;
     Keyboard.Five := false;
 }

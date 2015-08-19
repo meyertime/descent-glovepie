@@ -94,8 +94,6 @@ if (not var.Initialized) {
         if (var.ShiftState == 1) {
             var.ShiftState := @(buttonStateShift[shiftButton]);
             var.ShiftDefault := true;
-        } else {
-            var.ShiftDefault := false;
         }
         var.ButtonState@(shiftButton) := var.ShiftState;
     }
@@ -110,7 +108,6 @@ if (not var.Initialized) {
     // @(button)
     if (@(inputPrefix)@(button) and var.ButtonState@(button) == @(buttonStateOff)) {
         var.ButtonState@(button) := var.ShiftState;
-        var.ShiftDefault := false;
     }
 </text>
 }
@@ -178,7 +175,12 @@ if (not var.Initialized) {
             if (shiftMapping.Output is BasicMappingOutput)
             {
                 var basicOutput = (BasicMappingOutput) shiftMapping.Output;
-                @:@(basicOutput.Output) := (var.ButtonState@(buttonMapping.Input) == @(buttonStateShift[shiftButton]));
+                <text>
+                    @(basicOutput.Output) := (var.ButtonState@(buttonMapping.Input) == @(buttonStateShift[shiftButton]));
+                    if (var.ShiftDefault and (var.ButtonState@(buttonMapping.Input) == @(buttonStateShift[shiftButton])) {
+                        var.ShiftDefault := true;
+                    }
+                </text>
             }
             else if (shiftMapping.Output is KeyboardMacroOutput)
             {
@@ -186,6 +188,7 @@ if (not var.Initialized) {
                 <text>
                     if (var.ButtonState@(buttonMapping.Input) == @(buttonStateShift[shiftButton])) {
                         var.ButtonState@(buttonMapping.Input) := @(buttonStateCompleted);
+                        var.ShiftDefault := false;
                         @(KeyboardMacro(macroOutput))
                     }
                 </text>
