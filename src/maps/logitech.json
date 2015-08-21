@@ -1,0 +1,87 @@
+{
+    "alias": {
+        "DPadLeft": "(Joystick1.x <= -0.5)",
+        "DPadRight": "(Joystick1.x >= 0.5)",
+        "DPadUp": "(Joystick1.y <= -0.5)",
+        "DPadDown": "(Joystick1.y >= 0.5)",
+
+        "ActionLeft": "Joystick1.Button1",
+        "ActionRight": "Joystick1.Button3",
+        "ActionUp": "Joystick1.Button4",
+        "ActionDown": "Joystick1.Button2",
+
+        "LeftUpperShoulder": "Joystick1.Button5",
+        "LeftLowerShoulder": "Joystick1.Button6",
+        "RightUpperShoulder": "Joystick1.Button7",
+        "RightLowerShoulder": "Joystick1.Button8",
+        
+        "LeftThumb": "Joystick1.Button11",
+        "RightThumb": "Joystick1.Button12",
+
+        "StartLeft": "Joystick1.Button9",
+        "StartRight": "Joystick1.Button10",
+    },
+
+    "shift": [
+        "StartLeft",
+        "StartRight"
+    ],
+
+    "axis": {
+    },
+
+    "button": {
+        "ActionDown": {
+            "normal": "Keyboard.Enter",
+            "Select": "~Six",
+            "PS": "~Alt-F1"
+        },
+        "ActionRight": {
+            "normal": "PPJoy1.Digital1",
+            "Select": "~Seven",
+            "PS": "~Alt-F3"
+        },
+        "ActionLeft": {
+            "normal": "Keyboard.Space",
+            "Select": "~Nine",
+            "PS": "~F2"
+        },
+        "ActionUp": {
+            "normal": "PPJoy.Digital2",
+            "Select": "~Eight",
+            "PS": "~Tab"
+        },
+        "DPadUp": {
+            "normal": "Keyboard.Up",
+            "Start": "~Three"
+        },
+        "DPadDown": {
+            "normal": "Keyboard.Down",
+            "Start": "~One"
+        },
+        "DPadLeft": {
+            "normal": "Keyboard.Left",
+            "Start": "~Two",
+            "PS": "~Shift-F1"
+        },
+        "DPadRight": {
+            "normal": "Keyboard.Right",
+            "Start": "~Four",
+            "PS": "~Shift-F2"
+        },
+        "StartLeft": {
+            "StartRight": "~Five"
+        },
+        "StartRight": {
+            "normal": "~Escape",
+            "StartLeft": "~Zero"
+        }
+    },
+
+    "throttle": {
+        "axis": "PPJoy1.Analog0",
+        "button": "PPJoy1.Digital0",
+        "forwardDigital": "LeftLowerShoulder",
+        "reverseDigital": "LeftUpperShoulder"
+    }
+}

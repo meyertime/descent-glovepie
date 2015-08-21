@@ -17,20 +17,95 @@ Project Home: https://github.com/deftflux/descent-glovepie
 */
 
 @{
+    var shiftButtons = Model.Map.ShiftButtons.ToMaybe().Select(s => s.ToList()).ValueOrDefault(() => new List<string>());
+    var nonShiftButtons = Model.Map.ButtonMappings.Select(m => m.Input)
+        .Concat(Model.Map.ThrottleMapping.ToMaybe().Select(t => new[] {t.ForwardDigitalInput ?? t.ForwardAnalogInput, t.ReverseDigitalInput ?? t.ReverseAnalogInput}).ValueOrDefault(() => new string[0]))
+        .Distinct()
+        .Except(shiftButtons)
+        .ToList();
+    var allButtons = nonShiftButtons.Concat(shiftButtons).ToList();
+
     var inputPrefix = Model.Map.InputPrefix ?? "";
     if (inputPrefix.Length > 0)
     {
         inputPrefix += ".";
     }
 
-    var shiftButtons = Model.Map.ShiftButtons.ToMaybe().Select(s => s.ToList()).ValueOrDefault(() => new List<string>());
-    var nonShiftButtons = Model.Map.ButtonMappings.Select(m => m.Input)
-                               .Concat(Model.Map.ThrottleMapping.ToMaybe().Select(t => new[] {t.ForwardDigitalInput ?? t.ForwardAnalogInput, t.ReverseDigitalInput ?? t.ReverseAnalogInput}).ValueOrDefault(() => new string[0]))
-                               .Distinct()
-                               .Except(shiftButtons)
-                               .ToList();
-    var allButtons = nonShiftButtons.Concat(shiftButtons).ToList();
+    var resolveLookup = new Dictionary<string, string>();   
+    Func<string, string> resolveInput = (string input) =>
+    {
+        string result;
+        if (!resolveLookup.TryGetValue(input, out result))
+        {
+            result = input;
+            if (result.StartsWith(":"))
+            {
+                result = result.Substring(1);
+            }
+            else
+            {
+                result = Model.Map.InputAliases.ToMaybe()
+                    .Select(l => l.FirstOrDefault(a => a.Name.Equals(result, StringComparison.OrdinalIgnoreCase)))
+                    .Select(a => a.Value)
+                    .ValueOrDefault(() => inputPrefix + result);
+            }
 
+            resolveLookup.Add(input, result);
+        }
+        return result;
+    };
+    
+    var aliasLookup = new Dictionary<string, string>();
+    foreach (var button in allButtons)
+    {
+        var alias = button;
+        if (inputPrefix.Length > 0 && alias.StartsWith(":"))
+        {
+            if (alias.StartsWith(":" + inputPrefix, StringComparison.OrdinalIgnoreCase))
+            {
+                alias = alias.Substring(inputPrefix.Length + 1);
+            }
+        }
+
+        alias = Model.Map.InputAliases.ToMaybe()
+            .Select(l => l.FirstOrDefault(a => a.Value.Equals(alias, StringComparison.OrdinalIgnoreCase)))
+            .Select(a => a.Name)
+            .ValueOrDefault(alias);
+
+        aliasLookup.Add(button, alias);
+    }
+
+    Func<string, string> aliasify = (string input) =>
+    {
+        return aliasLookup[input].Replace(":", "");
+    };
+    
+    var idLookup = new Dictionary<string, string>();
+    foreach (var button in allButtons)
+    {
+        var id = button;
+        if (inputPrefix.Length > 0 && id.StartsWith(":"))
+        {
+            if (id.StartsWith(":" + inputPrefix, StringComparison.OrdinalIgnoreCase))
+            {
+                var shortId = id.Substring(inputPrefix.Length + 1);
+                if (Model.Map.InputAliases.ToMaybe().Select(l => !l.Any(a => a.Name.Equals(shortId, StringComparison.OrdinalIgnoreCase))).ValueOrDefault(false))
+                {
+                    id = shortId;
+                }
+            }
+        }
+
+        id = id.Replace(':', '_').Replace('.', '_');
+        
+        idLookup.Add(button, id);
+    }
+    
+    Func<string, string> toId = (string input) =>
+    {
+        return idLookup[input];
+    };
+    
     const int buttonStateOff = 0;
     const int buttonStateNormal = 1;
     const int buttonStateCompleted = -1;
@@ -44,8 +119,8 @@ Project Home: https://github.com/deftflux/descent-glovepie
     {
         var shiftButtonsAsNormal = shiftButtons.Except(Model.Map.ButtonMappings.Where(m => m.Input == button).SelectMany(m => m.ShiftMappings.Select(s => s.ShiftInput))).ToList();
         var buttonCondition = (shiftButtonsAsNormal.Count == 0)
-            ? ("(var.ButtonState" + button + " == " + buttonStateNormal + ")")
-            : ("InSet(var.ButtonState" + button + ", " + buttonStateNormal + ", " + String.Join(", ", shiftButtonsAsNormal.Select(b => buttonStateShift[b])) + ")");
+            ? ("(var.ButtonState" + toId(button) + " == " + buttonStateNormal + ")")
+            : ("InSet(var.ButtonState" + toId(button) + ", " + buttonStateNormal + ", " + String.Join(", ", shiftButtonsAsNormal.Select(b => buttonStateShift[b])) + ")");
         return buttonCondition;
     };
 }
@@ -68,7 +143,7 @@ Project Home: https://github.com/deftflux/descent-glovepie
 if (not var.Initialized) {
     @foreach (var button in allButtons)
     {
-        @:var.ButtonState@(button) := @(buttonStateOff);
+        @:var.ButtonState@(toId(button)) := @(buttonStateOff);
     }
     
     var.ShiftState := @(buttonStateNormal);
@@ -81,7 +156,7 @@ if (not var.Initialized) {
 // Axis mappings:
 @foreach (var axisMapping in Model.Map.AxisMappings)
 {
-    @:@(axisMapping.Output) := @(axisMapping.Invert ? "-" : "")@(inputPrefix)@(axisMapping.Input);
+    @:@(axisMapping.Output) := @(axisMapping.Invert ? "-" : "")@(resolveInput(axisMapping.Input));
 }
 
 
@@ -89,13 +164,13 @@ if (not var.Initialized) {
 @foreach (var shiftButton in shiftButtons)
 {
 <text>
-    // @(shiftButton)
-    if (@(inputPrefix)@(shiftButton) and var.ButtonState@(shiftButton) == @(buttonStateOff)) {
+    // @(aliasify(shiftButton))
+    if (@(resolveInput(shiftButton)) and var.ButtonState@(toId(shiftButton)) == @(buttonStateOff)) {
         if (var.ShiftState == 1) {
             var.ShiftState := @(buttonStateShift[shiftButton]);
             var.ShiftDefault := true;
         }
-        var.ButtonState@(shiftButton) := var.ShiftState;
+        var.ButtonState@(toId(shiftButton)) := var.ShiftState;
     }
 </text>
 }
@@ -105,9 +180,9 @@ if (not var.Initialized) {
 @foreach (var button in nonShiftButtons)
 {
 <text>
-    // @(button)
-    if (@(inputPrefix)@(button) and var.ButtonState@(button) == @(buttonStateOff)) {
-        var.ButtonState@(button) := var.ShiftState;
+    // @(aliasify(button))
+    if (@(resolveInput(button)) and var.ButtonState@(toId(button)) == @(buttonStateOff)) {
+        var.ButtonState@(toId(button)) := var.ShiftState;
     }
 </text>
 }
@@ -127,7 +202,7 @@ if (not var.Initialized) {
         var macroOutput = (KeyboardMacroOutput) mapping.NormalOutput;
         <text>
             if (@(buttonCondition)) {
-                var.ButtonState@(mapping.Input) := @(buttonStateCompleted);
+                var.ButtonState@(toId(mapping.Input)) := @(buttonStateCompleted);
                 @(KeyboardMacro(macroOutput))
             }
         </text>
@@ -146,15 +221,15 @@ if (not var.Initialized) {
     string analogThreshold = mapping.AnalogThreshold.GetValueOrDefault(0.1).ToString();
     var forwardCondition = (mapping.ForwardDigitalInput != null)
         ? getNormalButtonCondition(mapping.ForwardDigitalInput)
-        : ("(" + inputPrefix + mapping.ForwardAnalogInput + " > " + analogThreshold + ")");
+        : ("(" + resolveInput(mapping.ForwardAnalogInput) + " > " + analogThreshold + ")");
     var reverseCondition = (mapping.ReverseDigitalInput != null)
         ? getNormalButtonCondition(mapping.ReverseDigitalInput)
-        : ("(" + inputPrefix + mapping.ReverseAnalogInput + " > " + analogThreshold + ")");
+        : ("(" + resolveInput(mapping.ReverseAnalogInput) + " > " + analogThreshold + ")");
     var forwardInput = (mapping.ForwardAnalogInput != null)
-        ? inputPrefix + mapping.ForwardAnalogInput
+        ? resolveInput(mapping.ForwardAnalogInput)
         : "1";
     var reverseInput = (mapping.ReverseAnalogInput != null)
-        ? inputPrefix + mapping.ReverseAnalogInput
+        ? resolveInput(mapping.ReverseAnalogInput)
         : "1";
     @:@(mapping.AxisOutput) := ((-@(forwardInput) * @(forwardCondition)) + (@(reverseInput) * @(reverseCondition) * (not @(forwardCondition))));
     if (mapping.ButtonOutput != null)
@@ -171,13 +246,13 @@ if (not var.Initialized) {
     {
         foreach (var shiftMapping in buttonMapping.ShiftMappings.Where(s => s.ShiftInput == shiftButton))
         {
-            @:// @(shiftButton)+@(buttonMapping.Input)
+            @:// @(aliasify(shiftButton))+@(aliasify(buttonMapping.Input))
             if (shiftMapping.Output is BasicMappingOutput)
             {
                 var basicOutput = (BasicMappingOutput) shiftMapping.Output;
                 <text>
-                    @(basicOutput.Output) := (var.ButtonState@(buttonMapping.Input) == @(buttonStateShift[shiftButton]));
-                    if (var.ShiftDefault and (var.ButtonState@(buttonMapping.Input) == @(buttonStateShift[shiftButton])) {
+                    @(basicOutput.Output) := (var.ButtonState@(toId(buttonMapping.Input)) == @(buttonStateShift[shiftButton]));
+                    if (var.ShiftDefault and (var.ButtonState@(toId(buttonMapping.Input)) == @(buttonStateShift[shiftButton])) {
                         var.ShiftDefault := true;
                     }
                 </text>
@@ -186,8 +261,8 @@ if (not var.Initialized) {
             {
                 var macroOutput = (KeyboardMacroOutput) shiftMapping.Output;
                 <text>
-                    if (var.ButtonState@(buttonMapping.Input) == @(buttonStateShift[shiftButton])) {
-                        var.ButtonState@(buttonMapping.Input) := @(buttonStateCompleted);
+                    if (var.ButtonState@(toId(buttonMapping.Input)) == @(buttonStateShift[shiftButton])) {
+                        var.ButtonState@(toId(buttonMapping.Input)) := @(buttonStateCompleted);
                         var.ShiftDefault := false;
                         @(KeyboardMacro(macroOutput))
                     }
@@ -205,7 +280,7 @@ if (not var.Initialized) {
 // When non-shift buttons released:
 @foreach (var button in nonShiftButtons)
 {
-    @:if ((not @(inputPrefix)@(button)) and var.ButtonState@(button) != @(buttonStateOff)) var.ButtonState@(button) := @(buttonStateOff);
+    @:if ((not @(resolveInput(button))) and var.ButtonState@(toId(button)) != @(buttonStateOff)) var.ButtonState@(toId(button)) := @(buttonStateOff);
 }
 
 
@@ -214,8 +289,8 @@ if (not var.Initialized) {
 {
     var normalOutput = Model.Map.ButtonMappings.Where(m => m.Input == shiftButton).Select(m => m.NormalOutput).SingleOrDefault();
     <text>
-        // @(shiftButton)
-        if ((not @(inputPrefix)@(shiftButton)) and var.ButtonState@(shiftButton) != @(buttonStateOff)) {
+        // @(aliasify(shiftButton))
+        if ((not @(resolveInput(shiftButton))) and var.ButtonState@(toId(shiftButton)) != @(buttonStateOff)) {
             if (var.ShiftState == @(buttonStateShift[shiftButton])) {
                 var.ShiftState := @(buttonStateNormal);
                 @if (normalOutput != null)
@@ -239,7 +314,7 @@ if (not var.Initialized) {
                     @:}
                 }
             }
-            var.ButtonState@(shiftButton) := @(buttonStateOff);
+            var.ButtonState@(toId(shiftButton)) := @(buttonStateOff);
         }
     </text>
 }

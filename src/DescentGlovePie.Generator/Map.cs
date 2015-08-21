@@ -9,6 +9,10 @@ namespace DescentGlovePie.Generator
         [JsonProperty("input")]
         public string InputPrefix { get; set; }
 
+        [JsonProperty("alias")]
+        [JsonConverter(typeof(InputAliasesConverter))]
+        public InputAlias[] InputAliases { get; set; }
+
         [JsonProperty("shift")]
         public string[] ShiftButtons { get; set; }
 
