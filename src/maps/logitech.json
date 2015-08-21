@@ -11,8 +11,8 @@
         "ActionDown": "Joystick1.Button2",
 
         "LeftUpperShoulder": "Joystick1.Button5",
-        "LeftLowerShoulder": "Joystick1.Button6",
-        "RightUpperShoulder": "Joystick1.Button7",
+        "LeftLowerShoulder": "Joystick1.Button7",
+        "RightUpperShoulder": "Joystick1.Button6",
         "RightLowerShoulder": "Joystick1.Button8",
         
         "LeftThumb": "Joystick1.Button11",
@@ -27,48 +27,49 @@
         "StartRight"
     ],
 
-    "axis": {
-    },
-
     "button": {
         "ActionDown": {
             "normal": "Keyboard.Enter",
-            "Select": "~Six",
-            "PS": "~Alt-F1"
+            "StartLeft": "~Six",
+            "StartRight": "~Alt-F1"
         },
         "ActionRight": {
-            "normal": "PPJoy1.Digital1",
-            "Select": "~Seven",
-            "PS": "~Alt-F3"
+            "normal": "Keyboard.NUMPAD6",
+            "StartLeft": "~Seven",
+            "StartRight": "~Alt-F3"
         },
         "ActionLeft": {
             "normal": "Keyboard.Space",
-            "Select": "~Nine",
-            "PS": "~F2"
+            "StartLeft": "~Nine",
+            "StartRight": "~F2"
         },
         "ActionUp": {
-            "normal": "PPJoy.Digital2",
-            "Select": "~Eight",
-            "PS": "~Tab"
+            "normal": "Keyboard.NUMPAD8",
+            "StartLeft": "~Eight",
+            "StartRight": "~Tab"
         },
         "DPadUp": {
             "normal": "Keyboard.Up",
-            "Start": "~Three"
+            "StartRight": "~Three"
         },
         "DPadDown": {
             "normal": "Keyboard.Down",
-            "Start": "~One"
+            "StartRight": "~One"
         },
         "DPadLeft": {
             "normal": "Keyboard.Left",
-            "Start": "~Two",
-            "PS": "~Shift-F1"
+            "StartRight": "~Two",
+            "StartLeft": "~Shift-F1"
         },
         "DPadRight": {
             "normal": "Keyboard.Right",
-            "Start": "~Four",
-            "PS": "~Shift-F2"
+            "StartRight": "~Four",
+            "StartLeft": "~Shift-F2"
         },
+        "RightUpperShoulder": "Keyboard.NUMPAD9",
+        "RightLowerShoulder": "Keyboard.NUMPAD3",
+        "LeftThumb": "Keyboard.NUMPAD0",
+        "RightThumb": "Keyboard.NumpadDot",
         "StartLeft": {
             "StartRight": "~Five"
         },
@@ -79,8 +80,9 @@
     },
 
     "throttle": {
-        "axis": "PPJoy1.Analog0",
-        "button": "PPJoy1.Digital0",
+        "forwardButton": "Keyboard.NUMPAD7",
+        "reverseButton": "Keyboard.NUMPAD1",
+        "button": "Keyboard.Apostrophe",
         "forwardDigital": "LeftLowerShoulder",
         "reverseDigital": "LeftUpperShoulder"
     }

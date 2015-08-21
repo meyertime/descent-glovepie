@@ -10,7 +10,13 @@ namespace DescentGlovePie.Generator
         public string AxisOutput { get; set; }
 
         [JsonProperty("button")]
-        public string ButtonOutput { get; set; }
+        public string BothOutput { get; set; }
+
+        [JsonProperty("forwardButton")]
+        public string ForwardOutput { get; set; }
+
+        [JsonProperty("reverseButton")]
+        public string ReverseOutput { get; set; }
 
         [JsonProperty("forwardDigital")]
         public string ForwardDigitalInput { get; set; }

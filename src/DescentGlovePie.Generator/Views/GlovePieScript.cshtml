@@ -153,10 +153,13 @@ if (not var.Initialized) {
 }
 
 
-// Axis mappings:
-@foreach (var axisMapping in Model.Map.AxisMappings)
+@if (Model.Map.AxisMappings != null && Model.Map.AxisMappings.Length > 0)
 {
-    @:@(axisMapping.Output) := @(axisMapping.Invert ? "-" : "")@(resolveInput(axisMapping.Input));
+    @:// Axis mappings:
+    foreach (var axisMapping in Model.Map.AxisMappings)
+    {
+        @:@(axisMapping.Output) := @(axisMapping.Invert ? "-" : "")@(resolveInput(axisMapping.Input));
+    }
 }
 
 
@@ -231,10 +234,21 @@ if (not var.Initialized) {
     var reverseInput = (mapping.ReverseAnalogInput != null)
         ? resolveInput(mapping.ReverseAnalogInput)
         : "1";
-    @:@(mapping.AxisOutput) := ((-@(forwardInput) * @(forwardCondition)) + (@(reverseInput) * @(reverseCondition) * (not @(forwardCondition))));
-    if (mapping.ButtonOutput != null)
+    if (mapping.AxisOutput != null)
     {
-        @:@(mapping.ButtonOutput) := (@(forwardCondition) and @(reverseCondition));
+        @:@(mapping.AxisOutput) := ((-@(forwardInput) * @(forwardCondition)) + (@(reverseInput) * @(reverseCondition) * (not @(forwardCondition))));
+    }
+    if (mapping.BothOutput != null)
+    {
+        @:@(mapping.BothOutput) := (@(forwardCondition) and @(reverseCondition));
+    }
+    if (mapping.ForwardOutput != null)
+    {
+        @:@(mapping.ForwardOutput) := @(forwardCondition);
+    }
+    if (mapping.ReverseOutput != null)
+    {
+        @:@(mapping.ReverseOutput) := (@(reverseCondition) and (not @(forwardCondition)));
     }
 }
 

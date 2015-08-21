@@ -47,9 +47,6 @@ if (not var.Initialized) {
 }
 
 
-// Axis mappings:
-
-
 // When shift buttons pressed:
 
 // Ctrl
