@@ -1,0 +1,54 @@
+{
+    "input": "Keyboard",
+
+    "shift": [
+        "Ctrl",
+        "Alt"
+    ],
+
+    "axis": {
+    },
+
+    "button": {
+        "One": {
+            "Ctrl": "PPJoy1.Digital0",
+            "Alt": "PPJoy1.Analog0"
+        },
+        "Two": {
+            "Ctrl": "PPJoy1.Digital1",
+            "Alt": "PPJoy1.Analog1"
+        },
+        "Three": {
+            "Ctrl": "PPJoy1.Digital2",
+            "Alt": "PPJoy1.Analog2"
+        },
+        "Four": {
+            "Ctrl": "PPJoy1.Digital3",
+            "Alt": "PPJoy1.Analog3"
+        },
+        "Five": {
+            "Ctrl": "PPJoy1.Digital4",
+            "Alt": "PPJoy1.Analog4"
+        },
+        "Six": {
+            "Ctrl": "PPJoy1.Digital5",
+            "Alt": "PPJoy1.Analog5"
+        },
+        "Seven": {
+            "Ctrl": "PPJoy1.Digital6",
+            "Alt": "PPJoy1.Analog6"
+        },
+        "Eight": {
+            "Ctrl": "PPJoy1.Digital7",
+            "Alt": "PPJoy1.Analog7"
+        },
+        "Nine": {
+            "Ctrl": "PPJoy1.Digital8",
+            "Alt": "PPJoy1.Analog8"
+        },
+        "Zero": {
+            "Ctrl": "PPJoy1.Digital9",
+            "Alt": "PPJoy1.Analog9"
+        }
+    }
+}

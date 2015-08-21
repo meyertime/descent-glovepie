@@ -17,24 +17,24 @@ JOYSTICK BUTTON MAPPINGS
 
 PS3 Button  Joystick  Suggested Assignment
 -----------------------------------------
-R1          Button 0  Fire primary    
-R2          Button 1  Fire secondary
-L3          Button 2  Bank left
-R3          Button 3  Bank right
-Circle      Button 4  Convert energy to shield (D2)
-Triangle    Button 5  Headlight (D2)
-L1+L2       Button 6  Afterburner (D2)
+R1          Button 1  Fire primary    
+R2          Button 2  Fire secondary
+L3          Button 3  Bank left
+R3          Button 4  Bank right
+Circle      Button 5  Convert energy to shield (D2)
+Triangle    Button 6  Headlight (D2)
+L1+L2       Button 7  Afterburner (D2)
 
 
 JOYSTICK AXIS MAPPINGS
 
 PS3 Axis       Joystick  Suggested Assignment
 --------------------------------------------
-Left Stick X   Axis 0    Slide L/R
-Left Stick Y   Axis 1    Slide U/D
-Right Stick X  Axis 2    Turn L/R
-Right Stick Y  Axis 3    Pitch U/D
-L1 / L2        Axis 4    Throttle
+Left Stick X   Axis 1    Slide L/R
+Left Stick Y   Axis 2    Slide U/D
+Right Stick X  Axis 3    Turn L/R
+Right Stick Y  Axis 4    Pitch U/D
+L1 / L2        Axis 5    Throttle
 
 
 KEYBOARD MACROS
