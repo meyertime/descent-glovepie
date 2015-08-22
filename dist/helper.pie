@@ -128,122 +128,122 @@ if (Keyboard.Zero and var.ButtonStateZero == 0) {
 
 // Ctrl+One
 PPJoy1.Digital0 := (var.ButtonStateOne == 2);
-if (var.ShiftDefault and (var.ButtonStateOne == 2) {
-    var.ShiftDefault := true;
+if (var.ShiftDefault and (var.ButtonStateOne == 2)) {
+    var.ShiftDefault := false;
 }
 
 // Ctrl+Two
 PPJoy1.Digital1 := (var.ButtonStateTwo == 2);
-if (var.ShiftDefault and (var.ButtonStateTwo == 2) {
-    var.ShiftDefault := true;
+if (var.ShiftDefault and (var.ButtonStateTwo == 2)) {
+    var.ShiftDefault := false;
 }
 
 // Ctrl+Three
 PPJoy1.Digital2 := (var.ButtonStateThree == 2);
-if (var.ShiftDefault and (var.ButtonStateThree == 2) {
-    var.ShiftDefault := true;
+if (var.ShiftDefault and (var.ButtonStateThree == 2)) {
+    var.ShiftDefault := false;
 }
 
 // Ctrl+Four
 PPJoy1.Digital3 := (var.ButtonStateFour == 2);
-if (var.ShiftDefault and (var.ButtonStateFour == 2) {
-    var.ShiftDefault := true;
+if (var.ShiftDefault and (var.ButtonStateFour == 2)) {
+    var.ShiftDefault := false;
 }
 
 // Ctrl+Five
 PPJoy1.Digital4 := (var.ButtonStateFive == 2);
-if (var.ShiftDefault and (var.ButtonStateFive == 2) {
-    var.ShiftDefault := true;
+if (var.ShiftDefault and (var.ButtonStateFive == 2)) {
+    var.ShiftDefault := false;
 }
 
 // Ctrl+Six
 PPJoy1.Digital5 := (var.ButtonStateSix == 2);
-if (var.ShiftDefault and (var.ButtonStateSix == 2) {
-    var.ShiftDefault := true;
+if (var.ShiftDefault and (var.ButtonStateSix == 2)) {
+    var.ShiftDefault := false;
 }
 
 // Ctrl+Seven
 PPJoy1.Digital6 := (var.ButtonStateSeven == 2);
-if (var.ShiftDefault and (var.ButtonStateSeven == 2) {
-    var.ShiftDefault := true;
+if (var.ShiftDefault and (var.ButtonStateSeven == 2)) {
+    var.ShiftDefault := false;
 }
 
 // Ctrl+Eight
 PPJoy1.Digital7 := (var.ButtonStateEight == 2);
-if (var.ShiftDefault and (var.ButtonStateEight == 2) {
-    var.ShiftDefault := true;
+if (var.ShiftDefault and (var.ButtonStateEight == 2)) {
+    var.ShiftDefault := false;
 }
 
 // Ctrl+Nine
 PPJoy1.Digital8 := (var.ButtonStateNine == 2);
-if (var.ShiftDefault and (var.ButtonStateNine == 2) {
-    var.ShiftDefault := true;
+if (var.ShiftDefault and (var.ButtonStateNine == 2)) {
+    var.ShiftDefault := false;
 }
 
 // Ctrl+Zero
 PPJoy1.Digital9 := (var.ButtonStateZero == 2);
-if (var.ShiftDefault and (var.ButtonStateZero == 2) {
-    var.ShiftDefault := true;
+if (var.ShiftDefault and (var.ButtonStateZero == 2)) {
+    var.ShiftDefault := false;
 }
 
 // Alt+One
 PPJoy1.Analog0 := (var.ButtonStateOne == 3);
-if (var.ShiftDefault and (var.ButtonStateOne == 3) {
-    var.ShiftDefault := true;
+if (var.ShiftDefault and (var.ButtonStateOne == 3)) {
+    var.ShiftDefault := false;
 }
 
 // Alt+Two
 PPJoy1.Analog1 := (var.ButtonStateTwo == 3);
-if (var.ShiftDefault and (var.ButtonStateTwo == 3) {
-    var.ShiftDefault := true;
+if (var.ShiftDefault and (var.ButtonStateTwo == 3)) {
+    var.ShiftDefault := false;
 }
 
 // Alt+Three
 PPJoy1.Analog2 := (var.ButtonStateThree == 3);
-if (var.ShiftDefault and (var.ButtonStateThree == 3) {
-    var.ShiftDefault := true;
+if (var.ShiftDefault and (var.ButtonStateThree == 3)) {
+    var.ShiftDefault := false;
 }
 
 // Alt+Four
 PPJoy1.Analog3 := (var.ButtonStateFour == 3);
-if (var.ShiftDefault and (var.ButtonStateFour == 3) {
-    var.ShiftDefault := true;
+if (var.ShiftDefault and (var.ButtonStateFour == 3)) {
+    var.ShiftDefault := false;
 }
 
 // Alt+Five
 PPJoy1.Analog4 := (var.ButtonStateFive == 3);
-if (var.ShiftDefault and (var.ButtonStateFive == 3) {
-    var.ShiftDefault := true;
+if (var.ShiftDefault and (var.ButtonStateFive == 3)) {
+    var.ShiftDefault := false;
 }
 
 // Alt+Six
 PPJoy1.Analog5 := (var.ButtonStateSix == 3);
-if (var.ShiftDefault and (var.ButtonStateSix == 3) {
-    var.ShiftDefault := true;
+if (var.ShiftDefault and (var.ButtonStateSix == 3)) {
+    var.ShiftDefault := false;
 }
 
 // Alt+Seven
 PPJoy1.Analog6 := (var.ButtonStateSeven == 3);
-if (var.ShiftDefault and (var.ButtonStateSeven == 3) {
-    var.ShiftDefault := true;
+if (var.ShiftDefault and (var.ButtonStateSeven == 3)) {
+    var.ShiftDefault := false;
 }
 
 // Alt+Eight
 PPJoy1.Analog7 := (var.ButtonStateEight == 3);
-if (var.ShiftDefault and (var.ButtonStateEight == 3) {
-    var.ShiftDefault := true;
+if (var.ShiftDefault and (var.ButtonStateEight == 3)) {
+    var.ShiftDefault := false;
 }
 
 // Alt+Nine
 PPJoy1.Analog8 := (var.ButtonStateNine == 3);
-if (var.ShiftDefault and (var.ButtonStateNine == 3) {
-    var.ShiftDefault := true;
+if (var.ShiftDefault and (var.ButtonStateNine == 3)) {
+    var.ShiftDefault := false;
 }
 
 // Alt+Zero
 PPJoy1.Analog9 := (var.ButtonStateZero == 3);
-if (var.ShiftDefault and (var.ButtonStateZero == 3) {
-    var.ShiftDefault := true;
+if (var.ShiftDefault and (var.ButtonStateZero == 3)) {
+    var.ShiftDefault := false;
 }
 
 

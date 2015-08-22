@@ -266,8 +266,8 @@ if (not var.Initialized) {
                 var basicOutput = (BasicMappingOutput) shiftMapping.Output;
                 <text>
                     @(basicOutput.Output) := (var.ButtonState@(toId(buttonMapping.Input)) == @(buttonStateShift[shiftButton]));
-                    if (var.ShiftDefault and (var.ButtonState@(toId(buttonMapping.Input)) == @(buttonStateShift[shiftButton])) {
-                        var.ShiftDefault := true;
+                    if (var.ShiftDefault and (var.ButtonState@(toId(buttonMapping.Input)) == @(buttonStateShift[shiftButton]))) {
+                        var.ShiftDefault := false;
                     }
                 </text>
             }
