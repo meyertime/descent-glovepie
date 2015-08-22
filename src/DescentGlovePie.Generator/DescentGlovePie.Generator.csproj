@@ -64,6 +64,8 @@
     <Compile Include="BasicMappingOutput.cs" />
     <Compile Include="ButtonMapping.cs" />
     <Compile Include="ButtonMappingsConverter.cs" />
+    <Compile Include="InputAlias.cs" />
+    <Compile Include="InputAliasesConverter.cs" />
     <Compile Include="IScriptPostprocessor.cs" />
     <Compile Include="IScriptStore.cs" />
     <Compile Include="KeyboardMacroOutput.cs" />

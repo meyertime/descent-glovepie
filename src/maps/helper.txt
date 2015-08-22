@@ -1,0 +1,19 @@
+The purpose of this script is to help you assign game functions to the virtual
+joystick axes and buttons in Descent.  Some gamepads may already have some
+support in Descent, so when you try to assign them in Descent, the game may 
+pick up the real gamepad input instead of the virtual one.
+
+When using this script, you can use keystrokes on the keyboard to activate the
+various buttons and axes on the virtual joystick in order to assign them in the
+game.  Here are the keystrokes to use:
+
+
+Keystroke  Virtual Joystick
+---------------------------
+Ctrl-1     Button 1
+Ctrl-2     Button 2
+etc.
+
+Alt-1      Axis 1
+Alt-2      Axis 2
+etc.

@@ -8,11 +8,22 @@
             "description": "Input prefix that is applied to all inputs.  For instance, if you set this to \"Sixaxis1\" and define a button mapping for \"Square\", then the generated script will use \"Sixaxis1.Square\".  This parameter is optional; if not specified, no prefix is applied to inputs.",
             "type": "string"
         },
+        "alias": {
+            "description": "Input aliases.  Allows arbitrary GlovePIE code to be used as an input.",
+            "type": "object",
+            "patternProperties": {
+                "^[A-Za-z][A-Za-z0-9]*$": {
+					"description": "Alias for an input.",
+					"type": "string"
+				}
+            }
+        },
         "shift": {
             "description": "List of inputs that can be used as shift buttons.",
             "type": "array",
 			"items": {
-                "type": "string"
+                "type": "string",
+                "pattern": "^:?[A-Za-z][A-Za-z0-9]*(\\.[A-Za-z][A-Za-z0-9]*)*$"
             },
 			"uniqueItems": true
         },
@@ -20,7 +31,7 @@
             "description": "Mappings for analog inputs to virtual joystick axes.  Each property name is an input, and each value is the output.",
             "type": "object",
 			"patternProperties": {
-				"^[A-Za-z][A-Za-z0-9]*(\\.[A-Za-z][A-Za-z0-9]*)*$": {
+				"^:?[A-Za-z][A-Za-z0-9]*(\\.[A-Za-z][A-Za-z0-9]*)*$": {
 					"description": "Mapping of an analog input to an output.  The output may be inverted by putting a dash (-) at the beginning of the value.",
 					"type": "string",
 					"pattern": "^-?[A-Za-z][A-Za-z0-9]*(\\.[A-Za-z][A-Za-z0-9]*)*$"
@@ -32,7 +43,7 @@
             "description": "Mappings for digital inputs to virtual joystick buttons, keyboard keys, or keyboard macros.  Each property name is an input.",
             "type": "object",
 			"patternProperties": {
-				"^[A-Za-z][A-Za-z0-9]*(\\.[A-Za-z][A-Za-z0-9]*)*$": {
+				"^:?[A-Za-z][A-Za-z0-9]*(\\.[A-Za-z][A-Za-z0-9]*)*$": {
 					"oneOf": [
 						{
 							"description": "Simple mapping for this digital input.",
@@ -73,25 +84,35 @@
 					"type": "string",
 					"pattern": "^[A-Za-z][A-Za-z0-9]*(\\.[A-Za-z][A-Za-z0-9]*)*$"
 				},
+                "forwardButton": {
+					"description": "Virtual joystick button to use for the digital forward output.",
+					"type": "string",
+					"pattern": "^[A-Za-z][A-Za-z0-9]*(\\.[A-Za-z][A-Za-z0-9]*)*$"
+				},
+                "reverseButton": {
+					"description": "Virtual joystick button to use for the digital reverse output.",
+					"type": "string",
+					"pattern": "^[A-Za-z][A-Za-z0-9]*(\\.[A-Za-z][A-Za-z0-9]*)*$"
+				},
 				"forwardDigital": {
 					"description": "Digital input indicating when the button used for forward is pressed, if available.",
 					"type": "string",
-					"pattern": "^[A-Za-z][A-Za-z0-9]*(\\.[A-Za-z][A-Za-z0-9]*)*$"
+					"pattern": "^:?[A-Za-z][A-Za-z0-9]*(\\.[A-Za-z][A-Za-z0-9]*)*$"
 				},
 				"forwardAnalog": {
 					"description": "Analog input indicating how far the button used for forward is pressed, if available.",
 					"type": "string",
-					"pattern": "^[A-Za-z][A-Za-z0-9]*(\\.[A-Za-z][A-Za-z0-9]*)*$"
+					"pattern": "^:?[A-Za-z][A-Za-z0-9]*(\\.[A-Za-z][A-Za-z0-9]*)*$"
 				},
 				"reverseDigital": {
 					"description": "Digital input indicating when the button used for reverse is pressed, if available.",
 					"type": "string",
-					"pattern": "^[A-Za-z][A-Za-z0-9]*(\\.[A-Za-z][A-Za-z0-9]*)*$"
+					"pattern": "^:?[A-Za-z][A-Za-z0-9]*(\\.[A-Za-z][A-Za-z0-9]*)*$"
 				},
 				"reverseAnalog": {
 					"description": "Analog input indicating how far the button used for reverse is pressed, if available.",
 					"type": "string",
-					"pattern": "^[A-Za-z][A-Za-z0-9]*(\\.[A-Za-z][A-Za-z0-9]*)*$"
+					"pattern": "^:?[A-Za-z][A-Za-z0-9]*(\\.[A-Za-z][A-Za-z0-9]*)*$"
 				},
 				"analogThreshold": {
 					"description": "Threshold beyond which an analog button input is considered pressed for programming logic purposes.  This value is only used if a digital input is not specified for forward or reverse.",
@@ -104,14 +125,21 @@
 			},
 			"additionalProperties": false,
 			"allOf": [
-				{ "required": [ "axis" ] },
+                { 
+                    "anyOf": [ 
+                        { "required": [ "axis" ] }, 
+                        { "required": [ "button" ] }, 
+                        { "required": [ "forwardButton" ] }, 
+                        { "required": [ "reverseButton" ] } 
+                    ] 
+                },
 				{ "anyOf": [ { "required": [ "forwardDigital" ] }, { "required": [ "forwardAnalog" ] } ] },
 				{ "anyOf": [ { "required": [ "reverseDigital" ] }, { "required": [ "reverseAnalog" ] } ] }
 			]
         }
     },
 	"additionalProperties": false,
-    "required": ["axis", "button"],
+    "required": ["button"],
 
 	"definitions": {
 		"simpleOutput": {
