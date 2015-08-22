@@ -34,13 +34,13 @@ JOYSTICK BUTTON MAPPINGS
 
 XBOX Button  Joystick  Helper  Suggested Assignment
 ---------------------------------------------------
-RS           Button 1  Ctrl-1  Fire primary    
+RB           Button 1  Ctrl-1  Fire primary    
 RT           Button 2  Ctrl-2  Fire secondary
 Left Thumb   Button 3  Ctrl-3  Bank left
 Right Thumb  Button 4  Ctrl-4  Bank right
 B            Button 5  Ctrl-5  Convert energy to shield (D2)
 Y            Button 6  Ctrl-6  Headlight (D2)
-LS+LT        Button 7  Ctrl-7  Afterburner (D2)
+LB+LT        Button 7  Ctrl-7  Afterburner (D2)
 
 
 JOYSTICK AXIS MAPPINGS
@@ -51,7 +51,7 @@ Left Stick X   Axis 1    Alt-1   Slide L/R
 Left Stick Y   Axis 2    Alt-2   Slide U/D
 Right Stick X  Axis 3    Alt-3   Turn L/R
 Right Stick Y  Axis 4    Alt-4   Pitch U/D
-LS / LT        Axis 5    Alt-5   Throttle
+LB / LT        Axis 5    Alt-5   Throttle
 
 
 KEYBOARD MACROS
