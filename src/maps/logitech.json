@@ -1,9 +1,9 @@
 {
     "alias": {
-        "DPadLeft": "(Joystick1.x <= -0.5)",
-        "DPadRight": "(Joystick1.x >= 0.5)",
-        "DPadUp": "(Joystick1.y <= -0.5)",
-        "DPadDown": "(Joystick1.y >= 0.5)",
+        "DPadLeft": "Joystick1.Pov1Left",
+        "DPadRight": "Joystick1.Pov1Right",
+        "DPadUp": "Joystick1.Pov1Up",
+        "DPadDown": "Joystick1.Pov1Down",
 
         "ActionLeft": "Joystick1.Button1",
         "ActionRight": "Joystick1.Button3",
