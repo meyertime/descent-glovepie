@@ -8,7 +8,7 @@
 
     "axis": {
         "Joy1X": "PPJoy1.Analog0",
-        "Joy1Y": "PPJoy1.Analog1",
+        "Joy1Y": "-PPJoy1.Analog1",
         "Joy2X": "PPJoy1.Analog2",
         "Joy2Y": "PPJoy1.Analog3"
     },

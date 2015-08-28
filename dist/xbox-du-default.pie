@@ -106,7 +106,7 @@ if (not var.Initialized) {
 
 // Axis mappings:
 PPJoy1.Analog0 := XInput1.Joy1X;
-PPJoy1.Analog1 := XInput1.Joy1Y;
+PPJoy1.Analog1 := -XInput1.Joy1Y;
 PPJoy1.Analog2 := XInput1.Joy2X;
 PPJoy1.Analog3 := XInput1.Joy2Y;
 
