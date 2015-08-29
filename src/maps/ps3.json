@@ -1,6 +1,13 @@
 {
     "input": "Sixaxis1",
 
+    "alias": {
+        "LeftStickX": "(Sixaxis1.LeftStickX / (1 - Math.max(0, Math.abs(Sixaxis1.LeftStickY) - 0.7)))",
+        "LeftStickY": "(Sixaxis1.LeftStickY / (1 - Math.max(0, Math.abs(Sixaxis1.LeftStickX) - 0.7)))",
+        "RightStickX": "(Sixaxis1.RightStickX / (1 - Math.max(0, Math.abs(Sixaxis1.RightStickY) - 0.7)))",
+        "RightStickY": "(Sixaxis1.RightStickY / (1 - Math.max(0, Math.abs(Sixaxis1.RightStickX) - 0.7)))"
+    },
+
     "shift": [
         "PS",
         "Select",

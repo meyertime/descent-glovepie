@@ -1,6 +1,13 @@
 {
     "input": "XInput1",
 
+    "alias": {
+        "Joy1X": "((XInput1.Joy1X*1.15) / (1 - Math.max(0, Math.abs(XInput1.Joy1Y*1.15) - 0.7)))",
+        "Joy1Y": "((XInput1.Joy1Y*1.15) / (1 - Math.max(0, Math.abs(XInput1.Joy1X*1.15) - 0.7)))",
+        "Joy2X": "((XInput1.Joy2X*1.15) / (1 - Math.max(0, Math.abs(XInput1.Joy2Y*1.15) - 0.7)))",
+        "Joy2Y": "((XInput1.Joy2Y*1.15) / (1 - Math.max(0, Math.abs(XInput1.Joy2X*1.15) - 0.7)))"
+    },
+
     "shift": [
         "Back",
         "Start"

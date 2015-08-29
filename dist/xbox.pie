@@ -103,10 +103,10 @@ if (not var.Initialized) {
 
 
 // Axis mappings:
-PPJoy1.Analog0 := XInput1.Joy1X;
-PPJoy1.Analog1 := XInput1.Joy1Y;
-PPJoy1.Analog2 := XInput1.Joy2X;
-PPJoy1.Analog3 := -XInput1.Joy2Y;
+PPJoy1.Analog0 := ((XInput1.Joy1X*1.15) / (1 - Math.max(0, Math.abs(XInput1.Joy1Y*1.15) - 0.7)));
+PPJoy1.Analog1 := ((XInput1.Joy1Y*1.15) / (1 - Math.max(0, Math.abs(XInput1.Joy1X*1.15) - 0.7)));
+PPJoy1.Analog2 := ((XInput1.Joy2X*1.15) / (1 - Math.max(0, Math.abs(XInput1.Joy2Y*1.15) - 0.7)));
+PPJoy1.Analog3 := -((XInput1.Joy2Y*1.15) / (1 - Math.max(0, Math.abs(XInput1.Joy2X*1.15) - 0.7)));
 
 
 // When shift buttons pressed:
