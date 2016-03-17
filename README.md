@@ -10,4 +10,4 @@ Apache License 2.0
 
 Everything is provided as-is with no warranties or guarantees, whether express or implied.
 
-PPJoy binary is included in this repo for convenience, but it is covered separately by its own license (GPL).
+PPJoy and GlovePIE binaries are included in this repo for convenience, but they are covered separately by their own licenses.
